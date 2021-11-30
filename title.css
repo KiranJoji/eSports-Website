@@ -1,0 +1,70 @@
+.title-container {
+  top: auto;
+  left: auto;
+  right: 0px;
+  width: 100%;
+  bottom: 0px;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title-container1 {
+  display: flex;
+  align-items: center;
+  padding-left: var(--dl-space-space-tripleunit);
+  padding-right: var(--dl-space-space-tripleunit);
+  flex-direction: column;
+  justify-content: center;
+}
+.title-container2 {
+  display: flex;
+  position: relative;
+}
+.title-heading {
+  color: var(--dl-color-gray-white);
+  text-align: center;
+}
+.title-text {
+  color: var(--dl-color-gray-900);
+  max-width: 600px;
+  text-align: center;
+}
+.title-image {
+  top: auto;
+  left: auto;
+  right: 0px;
+  width: 100%;
+  bottom: -1px;
+  position: absolute;
+  object-fit: cover;
+}
+.title-image1 {
+  left: auto;
+  right: 0px;
+  width: 100%;
+  bottom: 0px;
+  display: none;
+  position: absolute;
+  object-fit: cover;
+}
+.rootClassName1 {
+  top: 0px;
+  margin: auto;
+}
+.rootClassName2 {
+  top: 0px;
+  margin: auto;
+}
+.rootClassName {
+  top: 0px;
+  margin: auto;
+}
+@media(max-width: 479px) {
+  .title-container1 {
+    padding-left: var(--dl-space-space-doubleunit);
+    padding-right: var(--dl-space-space-doubleunit);
+  }
+}
