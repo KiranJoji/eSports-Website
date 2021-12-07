@@ -1,0 +1,171 @@
+.players1-cards-container {
+  width: 1125px;
+  height: 277px;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-triplequarter);
+  margin-bottom: 0px;
+  flex-direction: row;
+  padding-bottom: var(--dl-space-space-triplequarter);
+  justify-content: space-between;
+}
+.players1-card1 {
+  flex: 0 0 auto;
+  width: 17%;
+  height: 250px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius50);
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.players1-image {
+  width: 116px;
+  height: 50%;
+  object-fit: cover;
+}
+.players1-text {
+  color: var(--dl-color-secondary-100);
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: Open Sans;
+}
+.players1-card2 {
+  flex: 0 0 auto;
+  width: 17%;
+  height: 250px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius50);
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.players1-image1 {
+  width: 114px;
+  height: 50%;
+  object-fit: cover;
+}
+.players1-text02 {
+  color: var(--dl-color-secondary-100);
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: Open Sans;
+}
+.players1-card3 {
+  flex: 0 0 auto;
+  width: 17%;
+  height: 250px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius50);
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.players1-image2 {
+  width: 111px;
+  height: 50%;
+  object-fit: cover;
+}
+.players1-text04 {
+  color: var(--dl-color-secondary-100);
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: Open Sans;
+}
+.players1-card4 {
+  flex: 0 0 auto;
+  width: 17%;
+  height: 250px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius50);
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.players1-image3 {
+  width: 111px;
+  height: 50%;
+  object-fit: cover;
+}
+.players1-text06 {
+  color: var(--dl-color-secondary-100);
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: Open Sans;
+}
+.players1-card5 {
+  flex: 0 0 auto;
+  width: 17%;
+  height: 250px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius50);
+  flex-direction: column;
+  background-color: var(--dl-color-gray-white);
+}
+.players1-image4 {
+  width: 111px;
+  height: 50%;
+  object-fit: cover;
+}
+.players1-text08 {
+  color: var(--dl-color-secondary-100);
+  margin-top: var(--dl-space-space-unit);
+  text-align: center;
+  font-family: Open Sans;
+}
+@media(max-width: 991px) {
+  .players1-cards-container {
+    align-items: center;
+    flex-direction: column;
+  }
+  .players1-card1 {
+    width: 90%;
+    margin-bottom: var(--dl-space-space-fiveunits);
+  }
+  .players1-card2 {
+    width: 90%;
+    margin-bottom: var(--dl-space-space-fiveunits);
+  }
+  .players1-card3 {
+    width: 90%;
+    margin-bottom: var(--dl-space-space-fiveunits);
+  }
+  .players1-card4 {
+    width: 90%;
+    margin-bottom: var(--dl-space-space-fiveunits);
+  }
+  .players1-card5 {
+    width: 90%;
+    margin-bottom: var(--dl-space-space-fiveunits);
+  }
+}
+@media(max-width: 479px) {
+  .players1-card1 {
+    margin-bottom: var(--dl-space-space-tripleunit);
+  }
+  .players1-card2 {
+    margin-bottom: var(--dl-space-space-tripleunit);
+  }
+  .players1-card3 {
+    margin-bottom: var(--dl-space-space-tripleunit);
+  }
+  .players1-card4 {
+    margin-bottom: var(--dl-space-space-tripleunit);
+  }
+  .players1-card5 {
+    margin-bottom: var(--dl-space-space-tripleunit);
+  }
+}

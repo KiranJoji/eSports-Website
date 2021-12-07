@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Stanford Movable Map</title>
+<style>
+
+#total {
+    position: absolute;
+	left: 50px;
+    top: 50px; 
+    right: 300px; 
+    bottom: 50px; 
+    overflow: hidden; 
+    border: 10px solid grey;
+}
+
+#forwardOverlay {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 600px;
+	width: 400px;
+}
+
+#backwardOverlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 600px;
+	width: 400px;
+}
+
+#buttons {
+    width: 150px;
+    position: absolute;
+    right: 70px;
+    top: 50px;
+}
+
+#movement {
+    width: 150px;
+	height: 150px;
+    position: absolute;
+    right: 85px;
+    top: 150px;
+}
+
+#up {
+	position: absolute;
+	left: 50px;
+	top: 0px;
+}
+#down {
+	position: absolute;
+	left: 50px;
+	bottom: 0px;
+}
+#left {
+	position: absolute;
+	left: 0px;
+	top: 50px;
+}
+#right {
+	position: absolute;
+	right: 0px;
+	top: 50px;
+}
+
+</style>
+</head>
+<body id="body">
+<div id="total">
+	<img  id='map' src='map-s.gif' alt='map' style="position: absolute; left: 0px; top: 0px; width: 1283px; height: 997px; cursor: auto;"/>
+</div>
+<div id="buttons">
+    <input type="button" name="zoomin" id="in" value="+" style="width: 50px; height: 50px; margin-right: 15px; font-size: 25px;">
+    <input type="button" name="zoomout" id="out" value="-" style="width: 50px; height: 50px; font-size: 25px;">
+</div>
+<div id="movement">
+    <input type="button" name="up" id="up" value="Up" style="width: 50px; height: 50px; font-size: 15px;">
+    <input type="button" name="down" id="down" value="Down" style="width: 50px; height: 50px; font-size: 15px;">
+	<input type="button" name="left" id="left" value="Left" style="width: 50px; height: 50px; font-size: 15px;">
+    <input type="button" name="right" id="right" value="Right" style="width: 50px; height: 50px; font-size: 15px;">
+</div>
+<script>
+"use strict";
+
+var arrayIndex = 3;
+var mapArray = ["map-xl.gif", "map-l.gif", "map-m.gif", "map-s.gif"];
+var mapWidth = [4084, 3063, 2047, 1283];
+var mapHeight = [3164, 2373, 1589, 997];
+
+function goArrow(direct) {
+	var arr = (window.innerHeight - 120)/2;
+	var ow = (window.innerWidth - 390)/2;
+	var top = parseInt(document.getElementById("map").style.top);
+	var left = parseInt(document.getElementById("map").style.left);
+	if(direct == "up")
+		document.getElementById("map").style.top = (top + arr) + "px";
+	if(direct == "down")
+		document.getElementById("map").style.top = (top - arr) + "px";
+	if(direct == "left")
+		document.getElementById("map").style.left = (left + ow) + "px";
+	if(direct == "right")
+		document.getElementById("map").style.left = (left - ow) + "px";
+}
+
+/// INFORMATION RETRIEVAL FUNCTIONS
+function getMapHeight() {
+	var map = document.getElementById("map");
+	return parseInt(map.style.height);
+}
+
+function getMapWidth() {
+	var map = document.getElementById("map");
+	console.log(map.style.width);
+	return parseInt(map.style.width);
+}
+
+function getMapTop() {
+	var map = document.getElementById("map");
+	return parseInt(map.style.top);
+}
+
+function getMapLeft() {
+	var map = document.getElementById("map");
+	return parseInt(map.style.left);
+}
+
+function nextMap() {
+	var go = true;
+	arrayIndex++;
+	if(arrayIndex >= 4){
+		arrayIndex = 3;
+		var go = false;
+	}
+	if(go){
+		update();
+		ncenter();
+	}
+}
+
+function backMap() {
+	arrayIndex--;
+	var go = true;
+	if(arrayIndex <= -1){
+		arrayIndex = 0
+		var go = false;
+	}
+	if(go){
+		update();
+		bcenter();
+	}
+}
+
+function update() {
+	document.getElementById("map").src = mapArray[arrayIndex];
+	document.getElementById("map").style.height = mapHeight[arrayIndex] + "px";
+	document.getElementById("map").style.width = mapWidth[arrayIndex] + "px";
+}
+
+function ncenter() { // zoom out
+	var map = document.getElementById("map");
+	var left = parseInt(map.style.left);
+	var top = parseInt(map.style.top);
+	var xloc = -(left) + (window.innerWidth - 370)/2;
+	var yloc = -(top) + (window.innerHeight - 120)/2;
+	console.log(xloc);
+	var xratio = mapWidth[arrayIndex] / mapWidth[arrayIndex-1];
+	var yratio = mapHeight[arrayIndex] / mapHeight[arrayIndex-1];
+	var xchange = xloc * xratio;
+	var ychange = yloc * yratio;
+	map.style.left = (left - (xchange - xloc)) + "px";
+	map.style.top = (top - (ychange - yloc)) + "px";
+} 
+
+function bcenter() { // zoom in
+	var map = document.getElementById("map");
+	var left = parseInt(map.style.left);
+	var top = parseInt(map.style.top);
+	var xloc = -(left) + (window.innerWidth - 370)/2;
+	var yloc = -(top) + (window.innerHeight - 120)/2;
+	console.log(xloc);
+	var xratio = mapWidth[arrayIndex] / mapWidth[arrayIndex+1];
+	var yratio = mapHeight[arrayIndex] / mapHeight[arrayIndex+1];
+	var xchange = xloc * xratio;
+	var ychange = yloc * yratio;
+	map.style.left = (left - (xchange - xloc)) + "px";
+	map.style.top = (top - (ychange - yloc)) + "px";
+}
+
+function inmap(x,y) {
+	var twidth = window.innerWidth - 300;
+	var theight = window.innerHeight - 50;
+	return (x >= getMapLeft() + 50 && x <= twidth && x <= getMapLeft() + getMapWidth() + 50 && y >= getMapTop() + 75 && y <= theight && y <= getMapTop() + getMapHeight() + 75);
+}
+
+/// DRAGGING FUNCTIONS
+
+var isDragging = false;
+var original = true;
+var oxloc = 0;
+var oyloc = 0;
+
+function handleMouseDown(event) {
+	if (inmap(event.clientX,event.clientY)) {
+		isDragging = true;
+		document.getElementById("map").style.cursor = "move"; //Sometimes doesn't work because websites glitch, mostly with devtools open
+		var left = parseInt(document.getElementById("map").style.left);
+		var top = parseInt(document.getElementById("map").style.top);
+		oxloc = event.clientX - left;
+		oyloc = event.clientY - top;
+		event.preventDefault();
+	}
+}
+
+function handleDblClick(event) {
+	var map = document.getElementById("map");
+	map.style.left = ((window.innerWidth - 350)/2 - oxloc + 50) + "px";
+	map.style.top = ((window.innerHeight - 100)/2 - oyloc + 50) + "px";
+	event.preventDefault();
+}
+
+function handleMouseUp(event) {
+	if (isDragging) {
+		document.getElementById("map").style.cursor = "auto";
+		var map = document.getElementById("map");
+		map.style.left = (event.clientX - oxloc) + "px";
+		map.style.top = (event.clientY - oyloc) + "px";
+		isDragging = false;		
+	}
+}
+
+function handleMouseMove(event) {
+	if (isDragging) {
+		var map = document.getElementById("map");
+		map.style.left = (event.clientX - oxloc) + "px";
+		map.style.top = (event.clientY - oyloc) + "px";
+		event.preventDefault();
+	}
+}
+
+/// LISTENER FUNCTIONS
+document.getElementById("in").addEventListener("click", backMap);
+document.getElementById("out").addEventListener("click", nextMap);
+document.getElementById("up").addEventListener("click", function(){ goArrow("up") });
+document.getElementById("down").addEventListener("click", function(){ goArrow("down") });
+document.getElementById("left").addEventListener("click", function(){ goArrow("left") });
+document.getElementById("right").addEventListener("click", function(){ goArrow("right") });
+document.addEventListener("mousedown",handleMouseDown);
+document.addEventListener("mouseup",handleMouseUp);
+document.addEventListener("mousemove",handleMouseMove);
+document.getElementById("map").addEventListener("dblclick", handleDblClick);
+</script>
+</body>
+</html>
